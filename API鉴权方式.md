@@ -45,8 +45,8 @@ JWT对象通常由三部分构成：
 
     ```json
     {
-    	  "alg": "HS256",
-          "typ": "JWT"
+    	"alg": "HS256",
+        "typ": "JWT"
     }
     ```
 
