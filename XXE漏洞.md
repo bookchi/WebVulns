@@ -229,7 +229,7 @@ payload
 
 结果：
 
-![image-20191025165211139](/Users/furuijuan/Library/Application Support/typora-user-images/image-20191025165211139.png)
+![image-20191025165211139](1139.png)
 
 **But**，如果有特殊符号，就会报错了。因为xml并不直接输出`< > & "`之类的字符，因为元素/实体也是用的这些。这时需要用到`CDATA`，他会把所有的数据当作数据的常量，而非标记/实体。
 
