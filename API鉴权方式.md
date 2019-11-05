@@ -86,7 +86,7 @@ OAuth（开放授权）是一个开放标准，允许用户授权第三方网站
 
 OAuth协议又有1.0和2.0两个版本。相比较1.0版，2.0版整个授权验证流程更简单更安全，也是目前最主要的用户身份验证和授权方式。 2.0大致流程如下：
 
-![image-20190812221622789](/Users/furuijuan/Library/Application Support/typora-user-images/image-20190812221622789.png)
+![image-20190812221622789](21622789.png)
 
 步骤大致如下：（CSDN为第三方）
 
@@ -162,7 +162,7 @@ state，由第三方应用给出的随机码
 
 OAuth就是为了解决上面这些问题而诞生的。大致流程如下：
 
-![image-20190813114952694](/Users/furuijuan/Library/Application Support/typora-user-images/image-20190813114952694.png)
+![image-20190813114952694](52694.png)
 
 不难看出，B是关键。即，用户怎样才能给于客户端授权。
 
@@ -177,7 +177,7 @@ OAuth就是为了解决上面这些问题而诞生的。大致流程如下：
 
 授权码模式（authorization code）是功能最完整、流程最严密的授权模式。特点就是通过客户端的后台服务器，与“服务提供商”的认证服务器进行互动。（第三方app与google认证server互动）
 
-![image-20190813115215615](/Users/furuijuan/Library/Application Support/typora-user-images/image-20190813115215615.png)
+![image-20190813115215615](15615.png)
 
 步骤如下：
 
