@@ -1,0 +1,1 @@
+- [Weblogic反序列化远程代码执行漏洞（CVE-2019-2725)](https://co0ontty.github.io/2019/08/08/CVE_2019_2725.html)
