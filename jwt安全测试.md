@@ -23,7 +23,7 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 - header用来声明token的类型和签名用的算法等，需要经过Base64Url编码。比如以上token的头部经过base64解码后，为`{"alg":"HS256","typ":"JWT"}`
 
   ```python
-  # base64url编码乳腺癌所示
+  # base64url编码如下所示
   from base64 import *
   def base64URLen(S):
     t0=b64encode(s)
