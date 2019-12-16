@@ -45,11 +45,27 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 
   ![img](https://saucer-man.com/usr/uploads/2019/11/1040192119.png)
 
+## jwt流程
+
+jwt的使用流程是如何的呢？
+
+首先用户发送登陆请求，server端收到后，返回的响应体中，包含了token。之后的客户端发送请求，都要在某个header中带上token的内容。
+
+![img](http://www.0xby.com/wp-content/uploads/2019/06/7e8ed94b8ddf7e89ac44779bcdeec185.png)
+
+```http
+Authorization: Bearer eyJraWQiOiJrZXlzLzNjM2MyZWExYzNmMTEzZjY0OWRjOTM4OWRkNzFiODUxIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYifQ.eyJzdWIiOiJ0ZXN0In0.p3_kqvlEg2S7X98HPZuliUmY3JfQOVfSNfrtcxrDAUHrnSW5S8KqtsKUoMKvRtx41_sngfyIbhrnJJYvp90YaaKG90YyaVJrAVFx-uRXkssvAiE-6X8GIU9UI-kC_J5QWIasggQ7a1Ro9nhv5e7gZwJTq50YTg8yAJ8B-x9BmxKBh8k0tNh_NbfgrRrH6glLKKN3O2Z3GrWgWmUWd6RZuITj2LDRzD43LcY0RdzqSmxmHuQ8SDOWIT8kbGaBqSVO14GVoY8y1GHyskX2gZdUN6qaB6uB9W_XFdYuSrM2gD0srmq-rGcZbyEH_q-1zt8MWUw-JSJF5_JK09mMmBmrmw
+```
+
+
+
 ## jwt存在的安全风险
 
 ### 敏感信息泄漏
 
 我们能轻松解码payload和hedaer，因为这两个都只经过Base64Url编码，而有的时候开发者会误将敏感信息存在payload中。
+
+> 直接将jwt放到jet.io进行解析，在进行分析
 
 ### 未校验签名
 
@@ -68,8 +84,6 @@ eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiIxMjM0NTY3ODkwIiwibmFtZSI6IkpvaG4
 
 以上header指定了签名算法为`HS256`，意味着服务端利用此算法将header和payload进行加密，形成signature，同时接收到token时，也会利用此算法对signature进行签名验证。
 
-> jwt的生成过程是什么样的？
-
 但是如果我们修改了签名算法会怎么样？比如将header修改为：
 
 ```
@@ -86,6 +100,10 @@ https://jwt.io/#debugger将alg为none视为恶意行为，所以，无法通过�
 ![img](https://saucer-man.com/usr/uploads/2019/11/4261358706.png)
 
 用none算法生成的JWT只有两部分了，根本连签名都不存在。
+
+**这部分可到这里进行练习**
+
+- [修改算法为none](http://demo.sjoerdlangkemper.nl/jwtdemo/rs256.php?)
 
 ### 签名密钥可被爆破
 
@@ -239,5 +257,13 @@ Please make a selection (1-6)
 ## Reference
 
 - copy自[jwt安全测试方法总结](https://saucer-man.com/information_security/377.html)
+- [hacking jwt](http://www.0xby.com/1806.html)
 
->其实只是理解了部分，还需要实践一下。
+>个人思考：其实还是jwt解码后，用户可以修改部分内容，从而使签名机制产生问题。大概是以下几点：
+>
+>- 解码后的部分存在敏感信息
+>- 后端没有验证signature---后端实现逻辑问题
+>- 修改header，让算法为none，后端是根据前端传过来的token进行校验的---签名算法不是固定在后端
+>- 修改header，RS256->HS256，后端使用RS256的pubkey加密。---也是后端逻辑的问题
+>- 针对hs256，爆破密钥
+>- 修改header，伪造密钥
