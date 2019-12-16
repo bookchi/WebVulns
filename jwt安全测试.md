@@ -95,7 +95,7 @@ Authorization: Bearer eyJraWQiOiJrZXlzLzNjM2MyZWExYzNmMTEzZjY0OWRjOTM4OWRkNzFiOD
 
 那么服务端收到token后，会认定其是无加密算法， 于是对signature的检验也就失效了，那么我们就可以随意修改payload部分伪造token。
 
-https://jwt.io/#debugger将alg为none视为恶意行为，所以，无法通过在线工具生成JWT，可以用python的jwt库来实现:
+https://jwt.io/#debugger  将alg为none视为恶意行为，所以，无法通过在线工具生成JWT，可以用python的jwt库来实现:
 
 ![img](https://saucer-man.com/usr/uploads/2019/11/4261358706.png)
 
