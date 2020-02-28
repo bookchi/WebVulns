@@ -19,6 +19,7 @@ gRPC 默认使用 protocol buffers，它是Google开源的一套序列化机制�
 - 用golang来访问server
 
 1. 定义服务
+
 首先，使用protobuf定义一个RPC服务。
 ```protobuf
 syntax = "proto3";
@@ -44,10 +45,14 @@ message HelloReply {
 }
 ```
 2. 生成gRPC代码
+
 然后，使用protocol buffer 编译器 protoc 编译helloworld.proto，生成所需代码。
+
 `protoc -I ../protos ../protos/helloworld.proto --go_out=plugins=grpc：helloworld\`
+
 这生成了 helloworld.pb.go ，包含了我们生成的客户端和服务端类，此外还有用于填充、序列化、提取 HelloRequest 和 HelloResponse 消息类型的类。
 3. 编写server端
+
 服务器：实现RPC方法，使RPC在网络上可用（绑定端口的赶脚）
 首先，实现RPC方法——实现 Greeter 服务所需要的行为。创建了server结构，实现了SayHello方法。也就实现了Greeter。
 ```go
@@ -79,6 +84,7 @@ func main() {
 }
 ```
 4. 编写cient端
+
 客户端的代码很简单，直接首先连接Greeter服务器，然后创建stub。再调用方法即可。
 有点像Socket通信
 - 建立连接，创建stub
