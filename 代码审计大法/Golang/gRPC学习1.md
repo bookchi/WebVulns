@@ -51,6 +51,7 @@ message HelloReply {
 `protoc -I ../protos ../protos/helloworld.proto --go_out=plugins=grpc：helloworld\`
 
 这生成了 helloworld.pb.go ，包含了我们生成的客户端和服务端类，此外还有用于填充、序列化、提取 HelloRequest 和 HelloResponse 消息类型的类。
+
 3. 编写server端
 
 服务器：实现RPC方法，使RPC在网络上可用（绑定端口的赶脚）
