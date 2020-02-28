@@ -1,6 +1,9 @@
 ## Kite基础教程
 
-[toc]
+- [Kite基础教程](#kite基础教程)
+         - [Kite基本用法](#kite基本用法)
+         - [服务注册和发现Kontrol](#服务注册和发现kontrol)
+         - [Reference](#reference)
 
 ### Kite基本用法
 
