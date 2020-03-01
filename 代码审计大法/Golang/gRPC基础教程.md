@@ -84,7 +84,7 @@ message HelloReply{
 
 ```shell
 # 在helloworld.proto文件所在目录下，执行如下protoc命令
-$ protoc --go_out=plugins=grpc:. route_guide.proto
+$ protoc --go_out=plugins=grpc:. helloworld.proto
 ```
 
 #### 2.3 编写服务端
