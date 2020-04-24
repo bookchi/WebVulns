@@ -458,7 +458,7 @@ JNDI是一组在Java应用中访问命名和目录服务的API，使得我们可
 ## 5 Reference
 
 - [seebug-深入理解 JAVA 反序列化漏洞](https://paper.seebug.org/312/)
-- [java rmi 使用教程及原理]
+- [java rmi 使用教程及原理](https://segmentfault.com/a/1190000016598069)
 
 
  
