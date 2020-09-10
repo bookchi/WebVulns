@@ -1,11 +1,11 @@
 # 1-如何写Go代码
 
 - [1-如何写Go代码](#1-如何写go代码)
-         - [Code organization](#code-organization)
-         - [Your first program](#your-first-program)
-         - [Import packages from your code](#import-packages-from-your-code)
-         - [Import packages from remote modules](#import-packages-from-remote-modules)
-         - [Testing](#testing)
+	- [Code organization](#code-organization)
+	- [Your first program](#your-first-program)
+	- [Import packages from your code](#import-packages-from-your-code)
+	- [Import packages from remote modules](#import-packages-from-remote-modules)
+	- [Testing](#testing)
          
 ### Code organization
 
